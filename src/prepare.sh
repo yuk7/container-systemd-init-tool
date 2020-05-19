@@ -5,5 +5,5 @@
 # http://opensource.org/licenses/mit-license.php
 
 
-/usr/.bin/cp -n /usr/bin/* /usr/.bin/
+/usr/.bin/cp -nd /usr/bin/* /usr/.bin/ 2>/dev/null
 /usr/.bin/mount --bind /usr/.bin /usr/bin
