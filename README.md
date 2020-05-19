@@ -3,7 +3,7 @@ Customized Arch Linux for WSL2
 
 This is now developing and testing. For debug purposes only.
 
-[Download](https://github.com/yuk7/ArchWSL2/releases/tag/latest)
+[Download](https://github.com/yuk7/ArchWSL2/releases/latest)
 
 ## What is this
 This runs Customized Arch Linux in WSL2.
