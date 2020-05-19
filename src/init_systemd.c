@@ -24,7 +24,7 @@ int main (int argc, char *argv[])
 	{
 		execl("/usr/.bin/bash", "/usr/.bin/bash", "-c", "/init_wsl2/prepare.sh", NULL);
 		exit(-1);
-    }
+	}
 	else if(pid != -1)
 	{	
 		wait(&status);
