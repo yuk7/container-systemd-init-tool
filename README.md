@@ -15,11 +15,14 @@ Please note that this distribution only works with WSL2.
 * systemd/systemctl
 * Run any commands and arguments from Windows (Arch2.exe, bash.exe, wsl.exe)
 * Select User from Windows command(Arch2.exe, wsl.exe)
-* Inherit current working directory
+* Inherit current working directory and PATH
 * DNS Resolver
 * Mount Windows drives
 * wslpath command
+* Execute .exe onmounted Windows drive(e.g. /mnt/c)
 
 ## Not working
-* Inherit Windows PATH and WSL environment variable
-* Linux Files inside of File Explorer(/etc and /usr/bin)
+* Linux Files inside of File Explorer(/usr/bin)
+* Execute .exe on Linux directory (e.g. /etc /root /home)
+* Run command from Windows with exec method(e.g. `wsl.exe -e`, `bash.exe -c`)
+* VS Code Remote Development
