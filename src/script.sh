@@ -1,30 +1,32 @@
-#!/bin/bash
+#!/usr/.bin/bash
 
 # Copyright (c) 2020 yuk7 <yukx00@gmail.com>
 # Released under the MIT license
 # http://opensource.org/licenses/mit-license.php
 
 
+export PATH=$PATH:/usr/.bin
+
+cp -nd /usr/bin/* /usr/.bin/ 2>/dev/null
+
 if [ -f "/init_wsl2/etc/passwd" ]; then
     PW1_MD5=$(md5sum /init_wsl2/etc/passwd | awk '{ print $1 }')
     PW2_MD5=$(md5sum /etc/passwd | awk '{ print $1 }')
     if [ $PW1_MD5 != $PW2_MD5 ] ; then
         cat /init_wsl2/etc/passwd | sed '{s/:[^:]*/:\/init_wsl2\/init_systemd/6}' > /etc/passwd
-        mount --bind /init_wsl2/etc /etc
     fi
 fi
 
+CONTAINER_PID=$(pgrep -xo wsl2_isocond.sh)
 
-SH=$(awk -F":" "\$4 == \"${INIT_WSL_UID}\" {print \$7}" /etc/passwd)
+# if the container daemon isn't running, run it.
+if [ "$CONTAINER_PID" = '' ] ; then
+    daemonize /usr/.bin/unshare --fork --pid --mount-proc /init_wsl2/wsl2_isocond.sh
+fi
 
-daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
-
-# Wait for systemd daemon
-while [[ "${SYSTEMD_PID}" = "" ]]; do
-    SYSTEMD_PID=$(pgrep -xo systemd)
-    sleep 0.1
+while [[ "${CONTAINER_PID}" = '' ]]; do
+    CONTAINER_PID=$(pgrep -xo wsl2_isocond.sh)
+    sleep 0.01
 done
 
-INIT_WSL_USER=$(id -u -n ${INIT_WSL_UID})
-
-exec nsenter -t ${SYSTEMD_PID} --all /sbin/runuser -s "${SH}" "${INIT_WSL_USER}" -- "${@}"
+exec nsenter -t ${CONTAINER_PID} --all /usr/.bin/bash -- /init_wsl2/isocon_sh.sh ${INIT_WSL_UID} "${@}"
