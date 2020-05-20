@@ -13,9 +13,10 @@ Please note that this distribution only works with WSL2.
 
 ## Working
 * systemd/systemctl
-* Run any commands and arguments from Windows ("Arch2.exe", bash.exe, wsl.exe)
-* Select User from Windows command(Arch2.exe, wsl.exe) *Limitation:Requires reboot the computer.
+* Run any commands and arguments from Windows (Arch2.exe, bash.exe, wsl.exe)
+* Select User from Windows command(Arch2.exe, wsl.exe)
 
 ## Not working
 * WSL commands(e.g. wslpath)
-* PATH for Windows command
+* Mount Windows Drives
+* DNS Resolver
