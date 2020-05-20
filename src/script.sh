@@ -29,4 +29,4 @@ while [[ "${CONTAINER_PID}" = '' ]]; do
     sleep 0.01
 done
 
-exec nsenter -t ${CONTAINER_PID} --all /usr/.bin/bash -- /init_wsl2/isocon_sh.sh ${INIT_WSL_UID} "${@}"
+exec nsenter -t ${CONTAINER_PID} --all --wd="${PWD}" /usr/.bin/bash -- /init_wsl2/isocon_sh.sh ${INIT_WSL_UID} "${@}"
