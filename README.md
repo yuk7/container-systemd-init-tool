@@ -15,8 +15,11 @@ Please note that this distribution only works with WSL2.
 * systemd/systemctl
 * Run any commands and arguments from Windows (Arch2.exe, bash.exe, wsl.exe)
 * Select User from Windows command(Arch2.exe, wsl.exe)
+* DNS Resolver
+* Mount Windows drives
+* wslpath command
 
 ## Not working
-* WSL commands(e.g. wslpath)
-* Mount Windows Drives
-* DNS Resolver
+* Inherit Windows PATH and WSL environment variable
+* Inherit current path
+* Linux Files inside of File Explorer(/etc and /usr/bin)
