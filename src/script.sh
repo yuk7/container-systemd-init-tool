@@ -9,11 +9,11 @@ export PATH=$PATH:/usr/.bin
 
 cp -nd /usr/bin/* /usr/.bin/ 2>/dev/null
 
-if [ -f "/init_wsl2/etc/passwd" ]; then
-    PW1_MD5=$(md5sum /init_wsl2/etc/passwd | awk '{ print $1 }')
+if [ -f "/init_wsl2/passwd" ]; then
+    PW1_MD5=$(md5sum /init_wsl2/passwd | awk '{ print $1 }')
     PW2_MD5=$(md5sum /etc/passwd | awk '{ print $1 }')
     if [ $PW1_MD5 != $PW2_MD5 ] ; then
-        cat /init_wsl2/etc/passwd | sed '{s/:[^:]*/:\/init_wsl2\/init_systemd/6}' > /etc/passwd
+        cat /init_wsl2/passwd | sed '{s/:[^:]*/:\/init_wsl2\/init_systemd/6}' > /etc/passwd
     fi
 fi
 
