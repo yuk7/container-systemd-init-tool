@@ -6,8 +6,8 @@
 
 
 # Mount only for container
-/usr/.bin/mount --make-private --rbind /init_wsl2/passwd /etc/passwd
-/usr/.bin/mount --make-private --rbind /usr/.bin /usr/bin
+/usr/.bin/mount --make-private --bind /init_wsl2/passwd /etc/passwd
+/usr/.bin/mount --make-private --bind /usr/.bin /usr/bin
 
 
 daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
