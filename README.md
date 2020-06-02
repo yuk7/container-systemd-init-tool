@@ -20,9 +20,7 @@ Please note that this distribution only works with WSL2.
 * Mount Windows drives
 * wslpath command
 * Execute .exe onmounted Windows drive(e.g. /mnt/c)
+* VS Code Remote Development
 
 ## Not working
-* Linux Files inside of File Explorer(/usr/bin)
 * Execute .exe on Linux directory (e.g. /etc /root /home)
-* Run command from Windows with exec method(e.g. `wsl.exe -e`, `bash.exe -c`)
-* VS Code Remote Development
