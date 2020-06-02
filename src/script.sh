@@ -7,8 +7,6 @@
 
 export PATH=/usr/.bin:$PATH
 
-cp -nd /usr/bin/* /usr/.bin/ 2>/dev/null
-
 CONTAINER_PID=$(pgrep -xo wsl2_isocond.sh)
 
 # if the container daemon isn't running, run it.

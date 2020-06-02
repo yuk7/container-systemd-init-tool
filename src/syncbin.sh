@@ -8,6 +8,13 @@ export PATH=/usr/.bin:$PATH
 
 # Don't kill this
 while true; do
+    for f in `ls /usr/bin/`; do
+        LINKTO=$(readlink /usr/bin/${f})
+        if [ ! `echo ${LINKTO}|grep init_systemd` ]; then
+            cp -nd "/usr/bin/${f}" "/usr/.bin/" 2>/dev/null
+        fi
+    done
     ls /usr/.bin/ | xargs -I{} ln -s "/init_wsl2/init_systemd" "/usr/bin/{}" 2>/dev/null
+    
     sleep 1;
 done
