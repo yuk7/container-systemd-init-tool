@@ -9,14 +9,6 @@ export PATH=$PATH:/usr/.bin
 
 cp -nd /usr/bin/* /usr/.bin/ 2>/dev/null
 
-if [ -f "/init_wsl2/etc/passwd" ]; then
-    PW1_MD5=$(md5sum /init_wsl2/etc/passwd | awk '{ print $1 }')
-    PW2_MD5=$(md5sum /init_wsl2/passwd | awk '{ print $1 }')
-    if [ $PW1_MD5 != $PW2_MD5 ] ; then
-        cat /init_wsl2/etc/passwd | sed '{s/:[^:]*/:\/init_wsl2\/init_systemd/6}' > /init_wsl2/passwd
-    fi
-fi
-
 CONTAINER_PID=$(pgrep -xo wsl2_isocond.sh)
 
 # if the container daemon isn't running, run it.

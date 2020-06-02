@@ -11,8 +11,6 @@ while [[ "${SYSTEMD_PID}" = '' ]]; do
 done
 
 INIT_WSL_UID=$1
-
-SH=$(awk -F":" "\$4 == \"${INIT_WSL_UID}\" {print \$7}" /etc/passwd)
 INIT_WSL_GID=$(awk -F":" "\$4 == \"${INIT_WSL_UID}\" {print \$4}" /etc/passwd)
 
-exec nsenter -t ${SYSTEMD_PID} -S ${INIT_WSL_UID} -G ${INIT_WSL_GID} --all --wd="${PWD}" "${SH}" "${@:2}"
+exec nsenter -t ${SYSTEMD_PID} -S ${INIT_WSL_UID} -G ${INIT_WSL_GID} --all --wd="${PWD}" "${@:2}"

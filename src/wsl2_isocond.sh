@@ -6,7 +6,6 @@
 
 
 # Mount only for container
-/usr/.bin/mount --make-private --bind /init_wsl2/etc /etc
 /usr/.bin/mount --make-private --bind /usr/.bin /usr/bin
 
 
