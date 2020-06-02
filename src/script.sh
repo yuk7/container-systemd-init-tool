@@ -5,9 +5,10 @@
 # http://opensource.org/licenses/mit-license.php
 
 
-export PATH=$PATH:/usr/.bin
+export PATH=/usr/.bin:$PATH
 
 cp -nd /usr/bin/* /usr/.bin/ 2>/dev/null
+ls /usr/.bin/ | xargs -I{} ln -s "/init_wsl2/init_systemd" "/usr/bin/{}" 2>/dev/null
 
 CONTAINER_PID=$(pgrep -xo wsl2_isocond.sh)
 
