@@ -13,4 +13,5 @@ done
 INIT_WSL_UID=$1
 INIT_WSL_GID=$(awk -F":" "\$4 == \"${INIT_WSL_UID}\" {print \$4}" /etc/passwd)
 
-exec nsenter -t ${SYSTEMD_PID} -S ${INIT_WSL_UID} -G ${INIT_WSL_GID} --all --wd="${PWD}" "${@:2}"
+EXEC_BIN=$(echo $2 | sed 's#^-#/bin/#g')
+exec nsenter -t ${SYSTEMD_PID} -S ${INIT_WSL_UID} -G ${INIT_WSL_GID} --all --wd="${PWD}" "$EXEC_BIN" "${@:3}"
