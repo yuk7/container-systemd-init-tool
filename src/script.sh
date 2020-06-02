@@ -8,13 +8,13 @@
 export PATH=/usr/.bin:$PATH
 
 cp -nd /usr/bin/* /usr/.bin/ 2>/dev/null
-ls /usr/.bin/ | xargs -I{} ln -s "/init_wsl2/init_systemd" "/usr/bin/{}" 2>/dev/null
 
 CONTAINER_PID=$(pgrep -xo wsl2_isocond.sh)
 
 # if the container daemon isn't running, run it.
 if [ "$CONTAINER_PID" = '' ] ; then
     daemonize /usr/.bin/unshare --fork --pid --mount-proc /init_wsl2/wsl2_isocond.sh
+    daemonize /init_wsl2/syncbin.sh
 fi
 
 while [[ "${CONTAINER_PID}" = '' ]]; do
