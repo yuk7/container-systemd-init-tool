@@ -35,12 +35,15 @@ int main (int argc, char *argv[])
 	cmd[2] = malloc((strlen(script) + 1) * sizeof(char));
 	strcpy(cmd[2], script);
 
+	cmd[3] = malloc((strlen(argv[0]) + 1) * sizeof(char));
+	strcpy(cmd[3], argv[0]);
+
 	for (int i = 1; i < argc; i++)
 	{
-		cmd[i+2] = malloc((strlen(argv[i]) + 1) * sizeof(char));
-		strcpy(cmd[i+2], argv[i]);
+		cmd[i+3] = malloc((strlen(argv[i]) + 1) * sizeof(char));
+		strcpy(cmd[i+3], argv[i]);
 	}
-	cmd[argc+2] = NULL;
+	cmd[argc+3] = NULL;
 	
 	char uidStr[10];
 	sprintf(uidStr, "%d", uid);
