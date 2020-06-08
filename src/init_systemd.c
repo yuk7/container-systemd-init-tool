@@ -31,7 +31,7 @@ int main (int argc, char *argv[])
 	cmd[1] = malloc((2 + 1) * sizeof(char));
 	strcpy(cmd[1], "--");
 
-	char script[] = "/init_wsl2/script.sh";
+	char script[] = "/boot/init_wsl2/script.sh";
 	cmd[2] = malloc((strlen(script) + 1) * sizeof(char));
 	strcpy(cmd[2], script);
 

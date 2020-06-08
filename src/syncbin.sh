@@ -14,7 +14,7 @@ while true; do
             cp -nd "/usr/bin/${f}" "/usr/.bin/" 2>/dev/null
         fi
     done
-    ls /usr/.bin/ | xargs -I{} ln -s "/init_wsl2/init_systemd" "/usr/bin/{}" 2>/dev/null
+    ls /usr/.bin/ | xargs -I{} ln -s "/boot/init_wsl2/init_systemd" "/usr/bin/{}" 2>/dev/null
     
     sleep 1;
 done
