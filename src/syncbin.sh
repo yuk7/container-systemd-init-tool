@@ -16,5 +16,5 @@ while true; do
     done
     ls /usr/.bin/ | xargs -I{} ln -s "/boot/init_wsl2/init_systemd" "/usr/bin/{}" 2>/dev/null
     
-    sleep 1;
+    sleep 7;
 done
