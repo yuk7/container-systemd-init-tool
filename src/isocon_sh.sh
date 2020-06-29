@@ -10,6 +10,8 @@ while [[ "${SYSTEMD_PID}" = '' ]]; do
     sleep 0.01
 done
 
+export PATH=$(echo $PATH | sed 's#/usr/.bin:##g')
+
 INIT_WSL_UID=$1
 INIT_WSL_USER=$(id -u -n ${INIT_WSL_UID})
 
