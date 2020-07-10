@@ -8,10 +8,4 @@
 # Mount only for container
 /usr/.bin/mount --make-private --bind /usr/.bin /usr/bin
 
-
-daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=multi-user.target
-
-# Don't kill this
-while true; do
-    sleep 10000;
-done
+exec /lib/systemd/systemd --system-unit=multi-user.target

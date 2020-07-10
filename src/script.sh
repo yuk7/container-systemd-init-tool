@@ -7,7 +7,7 @@
 
 export PATH=/usr/.bin:$PATH
 
-CONTAINER_PID=$(pgrep -xo wsl2_isocond.sh)
+CONTAINER_PID=$(pgrep -xo systemd)
 
 # if the container daemon isn't running, run it.
 if [ "$CONTAINER_PID" = '' ] ; then
@@ -16,7 +16,7 @@ if [ "$CONTAINER_PID" = '' ] ; then
 fi
 
 while [[ "${CONTAINER_PID}" = '' ]]; do
-    CONTAINER_PID=$(pgrep -xo wsl2_isocond.sh)
+    CONTAINER_PID=$(pgrep -xo systemd)
     sleep 0.01
 done
 
