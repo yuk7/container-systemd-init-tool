@@ -13,6 +13,7 @@ Please note that this distribution only works with WSL2.
 
 ## Working
 * systemd/systemctl
+* systemd-binfmt
 * Run any commands and arguments from Windows (Arch2.exe, bash.exe, wsl.exe)
 * Select User from Windows command(Arch2.exe, wsl.exe)
 * Inherit current working directory and PATH
