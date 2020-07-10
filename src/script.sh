@@ -7,6 +7,19 @@
 
 export PATH=/usr/.bin:$PATH
 
+# WSL2 check
+FSTYPE_LIST=$(cat /proc/self/mounts | awk '{print $3}')
+if [[ $FSTYPE_LIST == *lxfs* || $FSTYPE_LIST == *wslfs* ]] ; then
+    echo ***** ERROR *****
+    echo This distribution only works with WSL2.
+    echo This is running in WSL1 mode now.
+    echo Please use WSL2 mode.
+    echo
+    read -n 1 -s -r -p "Press any key to continue..."
+    exit
+fi
+
+
 CONTAINER_PID=$(pgrep -xo systemd)
 
 # if the container daemon isn't running, run it.
