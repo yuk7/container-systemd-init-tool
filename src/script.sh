@@ -10,7 +10,7 @@ export PATH=/usr/.bin:$PATH
 # WSL2 check
 FSTYPE_LIST=$(cat /proc/self/mounts | awk '{print $3}')
 if [[ $FSTYPE_LIST == *lxfs* || $FSTYPE_LIST == *wslfs* ]] ; then
-    echo ***** ERROR *****  >&2
+    echo ----- ERROR -----  >&2
     echo This distribution only works with WSL2. >&2
     echo This is running in WSL1 mode now.  >&2
     echo Please use WSL2 mode.  >&2
