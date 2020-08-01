@@ -5,6 +5,7 @@
 # http://opensource.org/licenses/mit-license.php
 
 
+cd .
 export PATH=$(echo $PATH | sed 's#/usr/.bin:##g')
 
 INIT_WSL_UID=$1
