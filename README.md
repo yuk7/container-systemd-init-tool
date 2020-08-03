@@ -22,6 +22,3 @@ Please note that this distribution only works with WSL2.
 * wslpath command
 * Execute .exe onmounted Windows drive(e.g. /mnt/c)
 * VS Code Remote Development
-
-## Not working
-* Execute .exe on Linux directory (e.g. /etc /root /home)
