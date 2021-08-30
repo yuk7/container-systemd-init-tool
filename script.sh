@@ -19,6 +19,15 @@ if [[ $FSTYPE_LIST == *lxfs* || $FSTYPE_LIST == *wslfs* ]] ; then
     exit 1
 fi
 
+# avoid first run
+if [[ -z "$(df | grep 'C:')" ]] ; then
+    exec $(echo ${@} | sed 's#/sbin/#/usr/.bin/#g' | sed 's#^/usr/bin/#/usr/.bin/#g')
+fi 
+
+# debug
+if [[ "${@}" =~ "_debug" ]] ; then
+    exec bash
+fi 
 
 CONTAINER_PID=$(pgrep -xo systemd)
 
